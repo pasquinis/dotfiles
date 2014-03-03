@@ -15,6 +15,10 @@ then
     git config --global user.email "$email"
     git config --global color.ui auto
     git config --global core.editor vim
+    git config color.status.header white
+    git config color.status.added  green
+    git config color.status.changed red
+    git config color.status.untracked ul
 else
     echo "your answer was different from (y):$answer, leaving, bye..."
     exit 1
