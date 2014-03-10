@@ -1,0 +1,20 @@
+alias ll='ls -latrh --color=auto'
+alias grep='grep --color=auto'
+
+if [ -f ~/.git-completion.bash ]; then
+    . ~/.git-completion.bash
+fi
+
+green=$(tput setaf 2)
+blue=$(tput setaf 4)
+bold=$(tput bold)
+red=$(tput setaf 1)
+reset=$(tput sgr0)
+
+export ENVIRONMENT="dev"
+export LESS='-R'
+export LESSOPEN='|~/.lessfilter %s'
+export EDITOR="vim"
+PS1='\u@\[$green\]\h\[$reset\]-\[$red\]$ENVIRONMENT\[$reset\]:\w\[$blue\]$(__git_ps1)\[$reset\] \$ '
+
+PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD/$HOME/~}\007"'
