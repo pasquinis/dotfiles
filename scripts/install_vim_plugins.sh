@@ -154,6 +154,11 @@ cd ~/.vim
 git submodule add https://github.com/plasticboy/vim-markdown.git bundle/vim-markdown
 git submodule init && git submodule update
 
+###### install vim-scala
+cd ~/.vim
+git submodule add https://github.com/derekwyatt/vim-scala.git bundle/vim-scala
+git submodule init && git submodule update
+
 ###### configure .vimrc with custom settings
 cat >> ~/.vim/vimrc <<END
 set autoindent
