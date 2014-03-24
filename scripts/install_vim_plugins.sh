@@ -16,7 +16,7 @@ mv pathogen/autoload ~/.vim/autoload
 call
 cat > ~/.vim/vimrc <<END
 
-call pathogen#incubate()
+call pathogen#infect('bundle/{}')
 call pathogen#helptags()
 call pathogen#infect()
 
