@@ -159,6 +159,12 @@ cd ~/.vim
 git submodule add https://github.com/derekwyatt/vim-scala.git bundle/vim-scala
 git submodule init && git submodule update
 
+###### install vim-json
+cd ~/.vim
+git submodule add https://github.com/elzr/vim-json.git bundle/vim-json
+git submodule init && git submodule update
+
+
 ###### configure .vimrc with custom settings
 cat >> ~/.vim/vimrc <<END
 set autoindent
