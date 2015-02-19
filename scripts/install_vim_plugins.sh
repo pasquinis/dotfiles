@@ -170,6 +170,11 @@ git submodule add https://github.com/jelera/vim-javascript-syntax.git
 git submodule init && git submodule update
 
 
+###### install vim-commentary
+cd ~/.vim
+git submodule add https://github.com/tpope/vim-commentary
+git submodule init && git submodule update
+
 
 ###### configure .vimrc with custom settings
 cat >> ~/.vim/vimrc <<END
@@ -188,6 +193,7 @@ set wildignore=.svn,.git
 set nocompatible
 set laststatus=2
 set lisp
+
 
 "enable autoremove of trailing dots
 set list listchars=tab:»·,trail:·
