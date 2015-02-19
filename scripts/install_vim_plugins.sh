@@ -149,11 +149,6 @@ cd ~/.vim
 git submodule add https://github.com/rodjek/vim-puppet.git bundle/vim-puppet
 git submodule init && git submodule update
 
-###### install vim-markdown
-cd ~/.vim
-git submodule add https://github.com/plasticboy/vim-markdown.git bundle/vim-markdown
-git submodule init && git submodule update
-
 ###### install vim-scala
 cd ~/.vim
 git submodule add https://github.com/derekwyatt/vim-scala.git bundle/vim-scala
@@ -166,15 +161,19 @@ git submodule init && git submodule update
 
 ###### install vim-javascript-syntax
 cd ~/.vim
-git submodule add https://github.com/jelera/vim-javascript-syntax.git
+git submodule add https://github.com/jelera/vim-javascript-syntax.git bundle/vim-javascript
 git submodule init && git submodule update
 
 
 ###### install vim-commentary
 cd ~/.vim
-git submodule add https://github.com/tpope/vim-commentary
+git submodule add https://github.com/tpope/vim-commentary bundle/vim-commentary
 git submodule init && git submodule update
 
+###### install gabrielelana vim-markdown
+cd ~/.vim
+git submodule add https://github.com/gabrielelana/vim-markdown bundle/vim-markdown
+git submodule init && git submodule update
 
 ###### configure .vimrc with custom settings
 cat >> ~/.vim/vimrc <<END
@@ -199,4 +198,8 @@ set lisp
 set list listchars=tab:»·,trail:·
 autocmd BufWrite * if ! &bin | :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
 
+"lists of commentstring for multiple language
+autocmd FileType ruby set commentstring=#\ %s
+autocmd FileType php set commentstring=//\ %s
+autocmd FileType apache set commentstring=#\ %s
 END
