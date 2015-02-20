@@ -202,4 +202,7 @@ autocmd BufWrite * if ! &bin | :call setline(1,map(getline(1,"$"),'substitute(v:
 autocmd FileType ruby set commentstring=#\ %s
 autocmd FileType php set commentstring=//\ %s
 autocmd FileType apache set commentstring=#\ %s
+
+"git commit wrap message
+autocmd Filetype gitcommit setlocal spell textwidth=72
 END
