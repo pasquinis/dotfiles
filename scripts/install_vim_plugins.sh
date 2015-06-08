@@ -193,6 +193,8 @@ set nocompatible
 set laststatus=2
 set lisp
 
+"disable vim JSON conceal
+let g:vim_json_syntax_conceal = 0
 
 "enable autoremove of trailing dots
 set list listchars=tab:»·,trail:·
