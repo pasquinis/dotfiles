@@ -35,7 +35,9 @@ set runtimepath^=~/.vim/plugged/ctrlp.vim
 let g:ctrlp_custom_ignore = '\.git$\|\.tmp$\|\.work$'
 endfunction
 
-
+function! TabularCustomization()
+set AddTabularPattern block /=>
+endfunction
 
 
 Plug 'http://github.com/tpope/vim-fugitive.git'
@@ -53,7 +55,8 @@ Plug 'http://github.com/elzr/vim-json.git'
 Plug 'http://github.com/jelera/vim-javascript-syntax.git'
 Plug 'http://github.com/tpope/vim-commentary'
 Plug 'http://github.com/gabrielelana/vim-markdown'
-Plug 'https://github.com/markcornick/vim-vagrant.git'
+Plug 'http://github.com/markcornick/vim-vagrant.git'
+Plug 'http://github.com/godlygeek/tabular.git', { 'do': function('TabularCustomization') }
 
 
 call plug#end()
