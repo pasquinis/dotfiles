@@ -207,4 +207,8 @@ autocmd FileType apache set commentstring=#\ %s
 
 "git commit wrap message
 autocmd Filetype gitcommit setlocal spell textwidth=72
+
+"remove conceal for vim-json plugin
+let g:vim_json_syntax_conceal = 0
+
 END
