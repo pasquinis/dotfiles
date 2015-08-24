@@ -7,45 +7,20 @@ cd ~
 mv ~/.vim ~/vim_`date +%y%m%d%H%M%S`
 mkdir .vim
 
-#### install pathogen
 cd ~
 ln -s ~/.vim/vimrc .vimrc
-rm -Rf pathogen
-git clone git://github.com/tpope/vim-pathogen.git pathogen
-mv pathogen/autoload ~/.vim/autoload
-call
+
+
+#install vim plug
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+
 cat > ~/.vim/vimrc <<END
 
-call pathogen#infect('bundle/{}')
-call pathogen#helptags()
-call pathogen#infect()
+call plug#begin('~/.vim/plugged')
 
-END
-
-
-cd .vim
-git init
-git add .
-git commit -m "Initial commit"
-
-
-###### install fugitive, for see git branch into statusline
-cd ~/.vim
-git submodule add git://github.com/tpope/vim-fugitive.git bundle/fugitive
-git submodule init && git submodule update
-
-###### install git-gutter for see git diff into the file
-cd ~/.vim
-git submodule add git://github.com/airblade/vim-gitgutter.git bundle/vim-gutter
-git submodule init && git submodule update
-
-#### install Solarize
-cd ~/.vim
-git submodule add  git://github.com/altercation/vim-colors-solarized.git bundle/solarized
-git submodule init && git submodule update
-
-cat >> ~/.vim/vimrc <<END
-
+function!  SolarizedCustomization()
 "solarized modification
 set background=dark
 let g:solarized_termtrans=1
@@ -53,63 +28,39 @@ let g:solarized_termcolors=256
 let g:solarized_contrast="high"
 let g:solarized_visibility="high"
 colorscheme solarized
+endfunction
 
-END
-
-echo export TERM="xterm-256color" >> ~/.bashrc
-
-
-### install SuperTab
-cd ~/.vim
-git submodule add https://github.com/ervandew/supertab.git bundle/supertab
-git submodule init && git submodule update
-
-
-###### install CTRLP as suggested by Simone Pasquini
-cd ~/.vim
-git submodule add https://github.com/kien/ctrlp.vim.git bundle/ctrlp
-git submodule init && git submodule update
-
-cat >> ~/.vim/vimrc <<END
-
-set runtimepath^=~/.vim/bundle/ctrlp
+function! CtrlpCustomization()
+set runtimepath^=~/.vim/plugged/ctrlp.vim
 let g:ctrlp_custom_ignore = '\.git$\|\.tmp$\|\.work$'
-
-END
-
-vim -c ':helptags ~/.vim/bundle/ctrlp/doc|q!'
+endfunction
 
 
 
-###### install Syntastic to check syntax inline
-cd ~/.vim
-git submodule add https://github.com/scrooloose/syntastic.git bundle/syntastic
-git submodule init && git submodule update
 
-cat >> ~/.vim/vimrc <<END
+Plug 'http://github.com/tpope/vim-fugitive.git'
+Plug 'http://github.com/airblade/vim-gitgutter.git'
+Plug 'http://github.com/altercation/vim-colors-solarized.git', { 'do': function('SolarizedCustomization') }
+Plug 'http://github.com/airblade/vim-gitgutter.git'
+Plug 'http://github.com/ervandew/supertab.git'
+Plug 'http://github.com/kien/ctrlp.vim.git', { 'do': function('CtrlpCustomization') }
+Plug 'http://github.com/scrooloose/syntastic.git'
+Plug 'http://github.com/bling/vim-airline.git'
+Plug 'http://github.com/taku-o/vim-changed.git'
+Plug 'http://github.com/rodjek/vim-puppet.git'
+Plug 'http://github.com/derekwyatt/vim-scala.git'
+Plug 'http://github.com/elzr/vim-json.git'
+Plug 'http://github.com/jelera/vim-javascript-syntax.git'
+Plug 'http://github.com/tpope/vim-commentary'
+Plug 'http://github.com/gabrielelana/vim-markdown'
+Plug 'https://github.com/markcornick/vim-vagrant.git'
+
+
+call plug#end()
+
+
 
 let g:syntastic_php_checkers=['php']
-
-END
-
-vim -c ':Helptags|q!'
-
-###### install Powerline
-#cd ~/.vim
-#git submodule add https://github.com/Lokaltog/vim-powerline.git bundle/powerline
-#git submodule init && git submodule update
-#
-#cat >> ~/.vim/vimrc <<END
-#let g:Powerline_symbols='fancy'
-#END
-
-
-###### install vim-airline
-cd ~/.vim
-git submodule add https://github.com/bling/vim-airline.git  bundle/vim-airline
-git submodule init && git submodule update
-
-cat >> ~/.vim/vimrc <<END
 
 "Airline setup
 let g:airline_powerline_fonts = 0
@@ -132,51 +83,6 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'default'
 let g:airline#extensions#tabline#tab_nr_type = 1
 
-END
-
-
-###### install vim-changed
-cd ~/.vim
-git submodule add https://github.com/taku-o/vim-changed.git bundle/vim-changed
-git submodule init && git submodule update
-
-#cat >> ~/.vim/vimrc <<END
-#let g:Powerline_symbols='fancy'
-#END
-
-###### install vim-puppet
-cd ~/.vim
-git submodule add https://github.com/rodjek/vim-puppet.git bundle/vim-puppet
-git submodule init && git submodule update
-
-###### install vim-scala
-cd ~/.vim
-git submodule add https://github.com/derekwyatt/vim-scala.git bundle/vim-scala
-git submodule init && git submodule update
-
-###### install vim-json
-cd ~/.vim
-git submodule add https://github.com/elzr/vim-json.git bundle/vim-json
-git submodule init && git submodule update
-
-###### install vim-javascript-syntax
-cd ~/.vim
-git submodule add https://github.com/jelera/vim-javascript-syntax.git bundle/vim-javascript
-git submodule init && git submodule update
-
-
-###### install vim-commentary
-cd ~/.vim
-git submodule add https://github.com/tpope/vim-commentary bundle/vim-commentary
-git submodule init && git submodule update
-
-###### install gabrielelana vim-markdown
-cd ~/.vim
-git submodule add https://github.com/gabrielelana/vim-markdown bundle/vim-markdown
-git submodule init && git submodule update
-
-###### configure .vimrc with custom settings
-cat >> ~/.vim/vimrc <<END
 set autoindent
 set expandtab tabstop=4 shiftwidth=4 softtabstop=4
 set incsearch
@@ -193,8 +99,6 @@ set nocompatible
 set laststatus=2
 set lisp
 
-"disable vim JSON conceal
-let g:vim_json_syntax_conceal = 0
 
 "enable autoremove of trailing dots
 set list listchars=tab:»·,trail:·
@@ -211,4 +115,10 @@ autocmd Filetype gitcommit setlocal spell textwidth=72
 "remove conceal for vim-json plugin
 let g:vim_json_syntax_conceal = 0
 
+
 END
+
+#vim -c ':helptags ~/.vim/plugged/ctrlp.vim/doc|q!'
+#vim -c ':Helptags|q!'
+vim -c ':PlugInstall|q!'
+
