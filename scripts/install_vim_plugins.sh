@@ -123,5 +123,4 @@ END
 
 #vim -c ':helptags ~/.vim/plugged/ctrlp.vim/doc|q!'
 #vim -c ':Helptags|q!'
-vim -c ':PlugInstall|q!'
-
+vim </dev/tty +PlugInstall +PlugClean +qall
