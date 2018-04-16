@@ -42,9 +42,9 @@ endfunction
 
 Plug 'http://github.com/tpope/vim-fugitive.git'
 Plug 'http://github.com/airblade/vim-gitgutter.git'
-Plug 'http://github.com/altercation/vim-colors-solarized.git', { 'do': function('SolarizedCustomization') }
+"Plug 'http://github.com/altercation/vim-colors-solarized.git', { 'do': function('SolarizedCustomization') }
 Plug 'http://github.com/airblade/vim-gitgutter.git'
-Plug 'http://github.com/ervandew/supertab.git'
+"Plug 'http://github.com/ervandew/supertab.git'
 Plug 'http://github.com/kien/ctrlp.vim.git', { 'do': function('CtrlpCustomization') }
 Plug 'http://github.com/scrooloose/syntastic.git'
 Plug 'http://github.com/vim-airline/vim-airline.git'
@@ -57,7 +57,7 @@ Plug 'http://github.com/jelera/vim-javascript-syntax.git'
 Plug 'http://github.com/tpope/vim-commentary'
 Plug 'http://github.com/gabrielelana/vim-markdown'
 Plug 'http://github.com/markcornick/vim-vagrant.git'
-Plug 'http://github.com/godlygeek/tabular.git', { 'do': function('TabularCustomization') }
+"Plug 'http://github.com/godlygeek/tabular.git', { 'do': function('TabularCustomization') }
 
 
 call plug#end()
@@ -67,25 +67,31 @@ call plug#end()
 let g:syntastic_php_checkers=['php']
 
 "Airline setup
-let g:airline_powerline_fonts = 0
-let g:airline_symbols = {}
-let g:airline_right_sep = '«'
-let g:airline_right_sep = '◀'
-let g:airline_symbols.linenr = '␊'
-let g:airline_symbols.linenr = '␤'
-let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.branch = '⎇'
-let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.paste = 'Þ'
-let g:airline_symbols.paste = '∥'
-let g:airline_symbols.whitespace = 'Ξ'
+"let g:airline_powerline_fonts = 0
+"let g:airline_symbols = {}
+"let g:airline_right_sep = '«'
+"let g:airline_right_sep = '◀'
+"let g:airline_symbols.linenr = '␊'
+"let g:airline_symbols.linenr = '␤'
+"let g:airline_symbols.linenr = '¶'
+"let g:airline_symbols.branch = '⎇'
+"let g:airline_symbols.paste = 'ρ'
+"let g:airline_symbols.paste = 'Þ'
+"let g:airline_symbols.paste = '∥'
+"let g:airline_symbols.whitespace = 'Ξ'
 
-let g:airline#extensions#whitespace#enabled = 0
-let g:airline_theme='bubblegum'
+"let g:airline#extensions#whitespace#enabled = 0
+let g:airline_theme='silver'
 
+let g:airline_powerline_fonts = 1
+" https://github.com/vim-airline/vim-airline/issues/382 Tabline Shows Closed
+" Buffers
+let g:airline#extensions#tabline#show_buffers = 0 "n
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#formatter = 'default'
-let g:airline#extensions#tabline#tab_nr_type = 1
+let g:airline#extensions#tabline#left_sep = ' ' "n
+let g:airline#extensions#tabline#left_alt_sep = '|' "n
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+let g:airline#extensions#tabline#tabnr_formatter = 'tabnr'
 
 set autoindent
 set expandtab tabstop=4 shiftwidth=4 softtabstop=4
