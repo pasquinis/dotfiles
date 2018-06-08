@@ -1,1 +1,3 @@
 simone ALL = NOPASSWD: /usr/bin/apt-get
+simone ALL = NOPASSWD: /usr/bin/apt
+simone ALL = NOPASSWD: /bin/systemctl
