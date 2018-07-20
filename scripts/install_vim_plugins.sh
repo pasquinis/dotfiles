@@ -93,6 +93,8 @@ let g:airline#extensions#tabline#left_alt_sep = '|' "n
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let g:airline#extensions#tabline#tabnr_formatter = 'tabnr'
 
+:hi CursorLine ctermfg=White ctermbg=Yellow cterm=bold guifg=white guibg=yellow gui=bold
+
 set autoindent
 set expandtab tabstop=4 shiftwidth=4 softtabstop=4
 set incsearch
